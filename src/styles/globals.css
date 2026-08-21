@@ -1,33 +1,76 @@
-
 @import "tailwindcss";
 
-/* -------------------------------------------------- */
-/* Tokens                                              */
-/* -------------------------------------------------- */
-:root {
-  --bg: #f5f4f1;
-  --bg-alt: #eeece7;
-  --orange: #ff7600;
-  --black: #2d2d2d;
-  --white: #ffffff;
-  --line: rgba(17, 17, 17, 0.12);
 
-  --radius: 24px;
-  --radius-sm: 12px;
+* {
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
 
-  --font-display: Arial, sans-serif;
-  --font-body: Arial, sans-serif;
+}
 
-  --container: 1440px;
-  --gutter: clamp(20px, 4vw, 64px);
-  --section-pad: clamp(64px, 10vw, 140px);
+*::-webkit-scrollbar {
+    display: none; 
+}
 
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+::selection {
+  background: #2d2d2d;
+  color: #f0f0f0;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: #2d2d2d;
+  color: #f0f0f0;
+  text-shadow: none;
+}
+
+
+a {
+  color: inherit; /* dziedziczy kolor tekstu z elementu nadrzędnego */
+  text-decoration: none; /* usuwa podkreślenie */
 }
 
 /* -------------------------------------------------- */
-/* Reset                                               */
+/* Tokens                                             */
 /* -------------------------------------------------- */
+
+:root {
+  /* Surfaces */
+  --bg: #F3F4F1;
+  --bg-alt: #E5E8E5;
+  --white: #FFFFFF;
+
+  /* Brand */
+  --navy: #102A32;
+  --navy-deep: #071D24;
+  --sea: #2F6670;
+  --sea-light: #8EAFB0;
+  --sand: #D8CDBB;
+
+  /* Text */
+  --black: #182124;
+  --muted: rgba(24, 33, 36, 0.68);
+
+  /* UI */
+  --line: rgba(16, 42, 50, 0.14);
+  --line-light: rgba(255, 255, 255, 0.18);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Layout */
+  --container: 1440px;
+  --gutter: clamp(20px, 4vw, 64px);
+  --section-pad: clamp(72px, 9vw, 144px);
+
+  /* Typography */
+  --font-body: "Inter", sans-serif;
+  --font-display: "Inter", sans-serif;
+}
+
+/* -------------------------------------------------- */
+/* Reset                                              */
+/* -------------------------------------------------- */
+
 *,
 *::before,
 *::after {
@@ -43,6 +86,7 @@ html {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
@@ -64,7 +108,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, p, figure {
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
   margin: 0;
 }
 
@@ -93,7 +142,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--sea);
   outline-offset: 3px;
 }
 
@@ -107,8 +156,9 @@ button {
 }
 
 /* -------------------------------------------------- */
-/* Layout helpers                                      */
+/* Layout helpers                                     */
 /* -------------------------------------------------- */
+
 .container {
   width: 100%;
   max-width: var(--container);
@@ -125,77 +175,110 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: var(--black);
+  text-transform: uppercase;
+
+  color: var(--navy);
 }
 
+/* -------------------------------------------------- */
+/* Typography                                         */
+/* -------------------------------------------------- */
 
-/* -------------------------------------------------- */
-/* Typography                                          */
-/* -------------------------------------------------- */
 .display {
   font-family: var(--font-display);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.035em;
   line-height: 0.94;
   text-transform: uppercase;
+  color: var(--navy-deep);
 }
 
-.text-orange { color: var(--orange); }
-.text-black { color: var(--black); }
+.text-sea {
+  color: var(--sea);
+}
+
+.text-navy {
+  color: var(--navy);
+}
+
+.text-sand {
+  color: var(--sand);
+}
+
+.text-black {
+  color: var(--black);
+}
 
 .body-lg {
   font-size: clamp(1.05rem, 1.4vw, 1.35rem);
   line-height: 1.55;
   font-weight: 400;
-  color: rgba(17, 17, 17, 0.72);
+  color: var(--muted);
 }
 
 /* -------------------------------------------------- */
-/* Buttons / controls                                  */
+/* Buttons / controls                                 */
 /* -------------------------------------------------- */
+
 .btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+
   padding: 10px 18px;
-  border: 1px solid var(--orange);
+
+  border: 1px solid var(--sea);
   border-radius: 999px;
-  color: var(--orange);
+
+  color: var(--sea);
+
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+
+  transition:
+    background 0.3s var(--ease),
+    color 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+
   white-space: nowrap;
 }
 
 .btn-outline:hover {
-  background: var(--orange);
+  background: var(--sea);
+  border-color: var(--sea);
   color: var(--white);
 }
 
 .btn-outline .plus {
   font-size: 15px;
   font-weight: 500;
+
   transition: transform 0.35s var(--ease);
 }
 
-.btn-outline[aria-expanded='true'] .plus {
+.btn-outline[aria-expanded="true"] .plus {
   transform: rotate(45deg);
 }
 
 /* -------------------------------------------------- */
-/* Scroll reveal                                       */
+/* Scroll reveal                                      */
 /* -------------------------------------------------- */
+
 .reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
 }
 
 .reveal.is-visible {
@@ -203,6 +286,14 @@ button {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.08s; }
-.reveal-delay-2 { transition-delay: 0.16s; }
-.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-1 {
+  transition-delay: 0.08s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.16s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.24s;
+}

@@ -1,7 +1,7 @@
 import { type FC, Suspense, useRef, useLayoutEffect, useEffect, useMemo } from 'react';
 import { Canvas, useFrame, useLoader, useThree, invalidate } from '@react-three/fiber';
 import { OrbitControls, useGLTF, useFBX, useProgress, Html, Environment, ContactShadows } from '@react-three/drei';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import * as THREE from 'three';
 
 const isMeshObject = (object: THREE.Object3D): object is THREE.Mesh => {
@@ -218,6 +218,7 @@ const ModelInner: FC<ModelInnerProps> = ({
       drag = true;
       lx = e.clientX;
       ly = e.clientY;
+      window.addEventListener('pointermove', move);
       window.addEventListener('pointerup', up);
     };
     const move = (e: PointerEvent) => {
@@ -231,12 +232,15 @@ const ModelInner: FC<ModelInnerProps> = ({
       vel.current = { x: dx * ROTATE_SPEED, y: dy * ROTATE_SPEED };
       invalidate();
     };
-    const up = () => (drag = false);
+    const up = () => {
+      drag = false;
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
     el.addEventListener('pointerdown', down);
-    el.addEventListener('pointermove', move);
     return () => {
       el.removeEventListener('pointerdown', down);
-      el.removeEventListener('pointermove', move);
+      window.removeEventListener('pointermove', move);
       window.removeEventListener('pointerup', up);
     };
   }, [gl, enableManualRotation]);
