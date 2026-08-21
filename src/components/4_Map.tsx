@@ -9,6 +9,7 @@ import {
   MapContainer,
   TileLayer,
 } from "react-leaflet";
+import type { GeoJsonObject } from "geojson";
 
 import parcels from "../data/parcels";
 import KDW from "../data/KDW";
@@ -24,34 +25,33 @@ const { BaseLayer } = LayersControl;
 type Category = {
   name: string;
   color: string;
-  data: any;
+  data: GeoJsonObject;
 };
 
+const parcelsGeoJson = parcels as GeoJsonObject;
+
 const categories: Category[] = [
-  { name: "KDW", color: "#ff6b6b", data: KDW },
-  { name: "KS7", color: "#4dabf7", data: KS7 },
-  { name: "MN5", color: "#51cf66", data: MN5 },
-  { name: "MR6", color: "#ffd43b", data: MR6 },
-  { name: "MW2", color: "#cc5de8", data: MW2 },
-  { name: "UMW4", color: "#20c997", data: UMW4 },
-  { name: "ZL8", color: "#ff922b", data: ZL8 },
+  { name: "KDW", color: "#2d2d2d", data: KDW as GeoJsonObject },
+  { name: "KS7", color: "#2f6670", data: KS7 as GeoJsonObject },
+  { name: "MN5", color: "#4e848f", data: MN5 as GeoJsonObject },
+  { name: "MR6", color: "#6ea4ae", data: MR6 as GeoJsonObject },
+  { name: "MW2", color: "#8ec4cf", data: MW2 as GeoJsonObject },
+  { name: "UMW4", color: "#afe6f1", data: UMW4 as GeoJsonObject },
+  { name: "ZL8", color: "#708f70", data: ZL8 as GeoJsonObject },
 ];
 
 const parcelStyle = {
-  fillColor: "transparent",
-  fillOpacity: 0,
-  color: "#fff",
-  weight: 1,
+  fillColor: "#ffffff",
+  fillOpacity: 0.5,
+  color: "#102a32",
+  weight: 2,
 };
 
-
-
-
 const createStyle = (color: string) => ({
-  color,
+  color: "#102a32",
   fillColor: color,
   fillOpacity: 0.35,
-  weight: 2,
+  weight: 1,
 });
 
 function onFeature(feature: any, layer: any, color: string) {
@@ -68,10 +68,10 @@ function onFeature(feature: any, layer: any, color: string) {
   layer.on({
     mouseover: () => {
       layer.setStyle({
-        color,
+        color: "#102a32",
         fillColor: color,
-        fillOpacity: 0.7,
-        weight: 4,
+        fillOpacity: 0.75,
+        weight: 3,
       });
 
       layer.bringToFront();
@@ -80,30 +80,8 @@ function onFeature(feature: any, layer: any, color: string) {
     mouseout: () => {
       layer.setStyle(createStyle(color));
     },
-
-    click: () => {
-      layer.setStyle({
-        color: "var(--white)",
-        fillColor: color,
-        fillOpacity: 0.85,
-        weight: 4,
-      });
-
-      layer.openPopup();
-    },
   });
 }
-
-{categories.map((category) => (
-  <GeoJSON
-    key={category.name}
-    data={category.data}
-    style={createStyle(category.color)}
-    onEachFeature={(feature, layer) =>
-      onFeature(feature, layer, category.color)
-    }
-  />
-))}
 
 export default function Map() {
   return (
@@ -113,45 +91,85 @@ export default function Map() {
           <p className="map__eyebrow">04 — Lokalizacja na mapie</p>
         </header>
 
-        <div className="map__frame">
-          <MapContainer
-            center={[53.980564, 14.771495]}
-            zoom={15}
-            scrollWheelZoom
-            className="map__leaflet"
-          >
-            <LayersControl position="topright">
-              <BaseLayer checked name="Mapa">
-                <TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" />
-              </BaseLayer>
+        <div className="map__content">
+          <div className="map__intro">
+            <h2>POZNAJ OTOCZENIE</h2>
 
-              <BaseLayer name="Satelita">
-                <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
-              </BaseLayer>
-            </LayersControl>
+            <p className="map__description">
+              Sprawdź układ działek, ich przeznaczenie oraz najbliższe
+              otoczenie Żółcino Peninsula.
+            </p>
+          </div>
 
-            <GeoJSON data={parcels} style={parcelStyle} />
+          <div className="map__frame">
+            <MapContainer
+              center={[53.980564, 14.771495]}
+              zoom={15}
+              scrollWheelZoom
+              className="map__leaflet"
+            >
+              <LayersControl position="topright">
+                <BaseLayer checked name="Jasna">
+                  <TileLayer
+                    url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                    attribution="&copy; OpenStreetMap contributors &copy; CARTO"
+                  />
+                </BaseLayer>
 
-            {categories.map((category) => (
-              <GeoJSON
-                key={category.name}
-                data={category.data}
-                style={createStyle(category.color)}
-                onEachFeature={onFeature}
-              />
-            ))}
-          </MapContainer>
+                <BaseLayer name="Ciemna">
+                  <TileLayer
+                    url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                    attribution="&copy; OpenStreetMap contributors &copy; CARTO"
+                  />
+                </BaseLayer>
 
-          <div className="map__legend" aria-label="Legenda mapy">
-            {categories.map((category) => (
-              <div key={category.name} className="map__legend-item">
-                <span
-                  className="map__legend-color"
-                  style={{ backgroundColor: category.color }}
+                <BaseLayer name="OpenStreetMap">
+                  <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution="&copy; OpenStreetMap contributors"
+                  />
+                </BaseLayer>
+
+                <BaseLayer name="Esri Street">
+                  <TileLayer
+                    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+                    attribution="Tiles &copy; Esri"
+                  />
+                </BaseLayer>
+
+                <BaseLayer name="Humanitarian">
+                  <TileLayer
+                    url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+                    attribution="&copy; OpenStreetMap contributors, Tiles style by HOT"
+                  />
+                </BaseLayer>
+              </LayersControl>
+
+              <GeoJSON data={parcelsGeoJson} style={parcelStyle} />
+
+              {categories.map((category) => (
+                <GeoJSON
+                  key={category.name}
+                  data={category.data}
+                  style={createStyle(category.color)}
+                  onEachFeature={(feature, layer) =>
+                    onFeature(feature, layer, category.color)
+                  }
                 />
-                <span>{category.name}</span>
-              </div>
-            ))}
+              ))}
+            </MapContainer>
+
+            <div className="map__legend" aria-label="Legenda mapy">
+              {categories.map((category) => (
+                <div key={category.name} className="map__legend-item">
+                  <span
+                    className="map__legend-color"
+                    style={{ backgroundColor: category.color }}
+                  />
+                  <span>{category.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

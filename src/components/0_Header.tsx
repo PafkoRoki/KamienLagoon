@@ -8,10 +8,9 @@ import logo from '../assets/logo.svg'
       bgColor: "var(--navy)",
       textColor: "var(--white)",
       links: [
-        { label: "LOCATION OVERVIEW", href: "/Lagoon/#info", ariaLabel: "Location overview" },
-        { label: "LOCATION", href: "/Lagoon/#location", ariaLabel: "Location" },
-        { label: "PLOT REGISTER", href: "/Lagoon/#spis", ariaLabel: "Plot register" },
-        { label: "FOR DEVELOPERS", href: "/Lagoon/#dev", ariaLabel: "Information for developers" }
+        { label: "LOCATION", href: "/KamienLagoon/#location", ariaLabel: "Location" },
+        { label: "PLOT REGISTER", href: "/KamienLagoon/#spis", ariaLabel: "Plot register" },
+        { label: "FOR DEVELOPERS", href: "/KamienLagoon/#dev", ariaLabel: "Information for developers" }
       ]
     },
     {
@@ -19,8 +18,8 @@ import logo from '../assets/logo.svg'
       bgColor: "var(--navy)",
       textColor: "var(--white)",
       links: [
-        { label: "INTERACTIVE MAP", href: "/Lagoon/#map", ariaLabel: "Interactive map" },
-        { label: "3D MODEL", href: "/Lagoon/#model", ariaLabel: "3D model" }
+        { label: "INTERACTIVE MAP", href: "/KamienLagoon/#map", ariaLabel: "Interactive map" },
+        { label: "3D MODEL", href: "/KamienLagoon/#model", ariaLabel: "3D model" }
       ]
     },
     {
@@ -36,7 +35,7 @@ import logo from '../assets/logo.svg'
 
 function Header() {
   return (
-
+<div>
     <CardNav
       logo={logo}
       logoAlt="Company Logo"
@@ -47,6 +46,7 @@ function Header() {
       buttonTextColor="var(--navy)"
       ease="power3.out"
       />
+</div>
   )
 }
 

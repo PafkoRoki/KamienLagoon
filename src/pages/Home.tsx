@@ -5,6 +5,7 @@ import Model from '../components/2_Model';
 import Gallery from '../components/3_Gallery';
 import Location from "../components/2_Location";
 import Map from "../components/4_Map";
+import Spis from "../components/5_Spis";
 
 export default function Home() {
   return (
@@ -21,6 +22,8 @@ export default function Home() {
         <Gallery />
 
         <Map />
+
+        <Spis />
 
       </main>
       <Footer />

@@ -140,3 +140,110 @@
     gap: 1rem;
   }
 }
+
+/* ...existing code... */
+
+.location__distances {
+  grid-column: 1 / -1;
+  margin-top: clamp(2rem, 5vw, 5rem);
+  border-top: 1px solid var(--line);
+}
+
+.location__distances-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.location__distances-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.location__distance {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 150px;
+  padding: 1.25rem 1rem 1.25rem 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.location__distance:nth-child(3n + 2),
+.location__distance:nth-child(3n + 3) {
+  padding-left: 1rem;
+}
+
+.location__distance:nth-child(3n) {
+  border-right: 0;
+}
+
+.location__distance strong {
+  color: var(--sea);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.85;
+}
+
+.location__distance small {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+.location__distance > span {
+  max-width: 180px;
+  color: var(--black);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 700px) {
+  .location__distances {
+    margin-top: 3rem;
+  }
+
+  .location__distances-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .location__distance:nth-child(3n) {
+    border-right: 1px solid var(--line);
+  }
+
+  .location__distance:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .location__distance:nth-child(3n + 2),
+  .location__distance:nth-child(3n + 3) {
+    padding-left: 0;
+  }
+
+  .location__distance:nth-child(even) {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .location__distances-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location__distance,
+  .location__distance:nth-child(2n),
+  .location__distance:nth-child(3n) {
+    min-height: auto;
+    padding: 1rem 0;
+    border-right: 0;
+  }
+}

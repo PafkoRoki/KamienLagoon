@@ -1,9 +1,47 @@
 "use client";
 
 import { useState } from "react";
+import MetallicPaint from "./MetallicPaint";
+import CountUp from './CountUp'
+import logo from '../assets/logofill.svg'
 import "./2_Location.css";
 
 type Language = "pl" | "en" | "de";
+
+
+type Distance = {
+  value: number;
+  label: string;
+  separator?: string;
+};
+
+const distances: Record<Language, Distance[]> = {
+  pl: [
+    { value: 4, label: "Centrum Kamienia Pomorskiego" },
+    { value: 4, label: "Centrum Dziwnowa" },
+    { value: 38, label: "Centrum Międzyzdrojów" },
+    { value: 230, label: "Centrum Berlina" },
+    { value: 1, label: "Droga wojewódzka DW107" },
+    { value: 19, label: "Droga ekspresowa S3" },
+  ],
+  en: [
+    { value: 4, label: "Kamień Pomorski city centre" },
+    { value: 4, label: "Dziwnów city centre" },
+    { value: 38, label: "Międzyzdroje city centre" },
+    { value: 230, label: "Berlin city centre" },
+    { value: 1, label: "DW107 regional road" },
+    { value: 19, label: "S3 expressway" },
+  ],
+  de: [
+    { value: 4, label: "Stadtzentrum Kamień Pomorski" },
+    { value: 4, label: "Stadtzentrum Dziwnów" },
+    { value: 38, label: "Stadtzentrum Międzyzdroje" },
+    { value: 230, label: "Stadtzentrum Berlin" },
+    { value: 1, label: "Regionalstraße DW107" },
+    { value: 19, label: "Schnellstraße S3" },
+  ],
+};
+
 
 const content = {
   pl: {
@@ -93,6 +131,60 @@ function Location() {
             ))}
           </div>
         </div>
+
+        <div className="location__distances">
+
+          <div className="location__distances-grid">
+            {distances[language].map((distance) => (
+              <div
+                className="location__distance"
+                key={distance.label}
+              >
+                <strong>
+                  <CountUp
+                    from={0}
+                    to={distance.value}
+                    separator={distance.separator ?? ","}
+                    direction="up"
+                    duration={1}
+                    className="count-up-text"
+                    delay={0}
+                  />
+                  <small> km</small>
+                </strong>
+
+                <span>{distance.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+    <div style={{ width: '100%', height: '300px', marginTop: 'var(--section-pad)' }}>
+    <MetallicPaint
+      imageSrc={logo}
+      seed={168}
+      scale={3}
+      patternSharpness={0.8}
+      noiseScale={0.35}
+      speed={0.04}
+      liquid={0.4}
+      mouseAnimation={true}
+      brightness={1.25}
+      contrast={0.75}
+      refraction={0.005}
+      blur={0.01}
+      chromaticSpread={0}
+      fresnel={0.7}
+      angle={0}
+      waveAmplitude={0.35}
+      distortion={0.35}
+      contour={0.08}
+      lightColor="#F1EBDD"
+      darkColor="#102A32"
+      tintColor="#D8CDBB"
+    />
+    </div>
+
       </div>
     </section>
   );
