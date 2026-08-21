@@ -34,10 +34,10 @@ export interface AccordionGalleryProps {
 }
 
 const DEFAULT_ITEMS: AccordionGalleryItem[] = [
-  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz1.jpg', label: 'ETAP I', link: '#' },
-  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz2.jpg', label: 'ETAP II', link: '#' },
-  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz3.1.jpg', label: 'ETAP III', link: '#' },
-  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz4.jpg', label: 'ETAP IV', link: '#' }
+  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz1.jpg', label: 'Żółcino Peninsula', link: '#' },
+  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz2.jpg', label: 'Potencjał inwestycji', link: '#' },
+  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz3.jpg', label: 'Kładka dla pieszych', link: '#' },
+  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz4.jpg', label: 'Kładka dla pieszych', link: '#' }
 ];
 
 const AccordionGallery = ({

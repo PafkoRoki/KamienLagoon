@@ -11,7 +11,7 @@ export default function Gallery() {
 
         <div className="gallery__content">
           <div className="gallery__intro">
-            <h2>POTENCHAŁ INWESTYCYJNY</h2>
+            <h2>POTENCJAŁ INWESTYCYJNY</h2>
 
             <p className="gallery__description">
               Żółcino Peninsula to rzadko spotykana możliwość realizacji projektu od podstaw na obszarze o tak dużej powierzchni i tak atrakcyjnym położeniu.<br/>
