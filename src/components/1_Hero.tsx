@@ -30,7 +30,7 @@ export default function Hero() {
       angle={0}
       waveAmplitude={0.35}
       distortion={0.35}
-      contour={0.08}
+      contour={0.01}
       lightColor="#F1EBDD"
       darkColor="#102A32"
       tintColor="#D8CDBB"
@@ -40,6 +40,7 @@ export default function Hero() {
         scrollHint="Scroll inside the frame"
         useWindowScroll
         startRadius={0}
+        scrollDistance={2}
         endRadius={0}
       >
         <div className="hero__copy">

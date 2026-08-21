@@ -6,8 +6,8 @@ const parcels = {
       type: "Feature",
       properties: {
         id: "ETAP II",
-        numer: "II",
-        area: "X",
+        numer: "ALL",
+        area: "268 859",
         status: "W trakcie przygotowania",
         price: "___ ___ ___",
       },

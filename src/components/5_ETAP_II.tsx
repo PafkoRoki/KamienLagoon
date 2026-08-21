@@ -1,15 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import "./5_Spis.css";
+import "./5_ETAP.css";
 
-import KDW from "../data/KDW";
-import KS7 from "../data/KS7";
-import MN5 from "../data/MN5";
-import MR6 from "../data/MR6";
-import MW2 from "../data/MW2";
-import UMW4 from "../data/UMW4";
-import ZL8 from "../data/ZL8";
+import ALL from "../data/parcels";
 
 type Language = "pl" | "en" | "de";
 
@@ -36,19 +30,13 @@ type Category = {
 const languages: Language[] = ["pl", "en", "de"];
 
 const categories: Category[] = [
-  { name: "KDW", color: "#2d2d2d", data: KDW as Category["data"] },
-  { name: "KS7", color: "#2f6670", data: KS7 as Category["data"] },
-  { name: "MN5", color: "#4e848f", data: MN5 as Category["data"] },
-  { name: "MR6", color: "#6ea4ae", data: MR6 as Category["data"] },
-  { name: "MW2", color: "#8ec4cf", data: MW2 as Category["data"] },
-  { name: "UMW4", color: "#afe6f1", data: UMW4 as Category["data"] },
-  { name: "ZL8", color: "#708f70", data: ZL8 as Category["data"] },
+  { name: "Całość inwestycji", color: "#2d2d2d", data: ALL as Category["data"] }
 ];
 
 const translations = {
   pl: {
-    eyebrow: "05 — Spis działek",
-    title: "WYBIERZ DZIAŁKĘ",
+    eyebrow: "05 — Etapy inwestycji",
+    title: "ETAP II",
     description:
       "Sprawdź dostępne działki, ich powierzchnię, status oraz cenę.",
     number: "Numer",
@@ -61,8 +49,8 @@ const translations = {
     soon: "Wkrótce więcej działek",
   },
   en: {
-    eyebrow: "05 — Plot list",
-    title: "CHOOSE PLOT",
+    eyebrow: "05 — Investment Stages",
+    title: "STAGE II",
     description:
       "Check the available plots, their area, status and price.",
     number: "Number",
@@ -75,8 +63,8 @@ const translations = {
     soon: "More plots coming soon",
   },
   de: {
-    eyebrow: "05 — Grundstücksliste",
-    title: "WÄHLE GRUNDSTÜCK",
+    eyebrow: "05 — Investitionsphasen",
+    title: "PHASE II",
     description:
       "Prüfe verfügbare Grundstücke, ihre Fläche, den Status und den Preis.",
     number: "Nummer",
@@ -185,11 +173,6 @@ export default function Spis() {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="spis__ending">
-            <h3>{t.stage2}</h3>
-            <p>{t.soon}</p>
           </div>
         </div>
       </div>

@@ -44,7 +44,7 @@ const parcelStyle = {
   fillColor: "#ffffff",
   fillOpacity: 0.5,
   color: "#102a32",
-  weight: 2,
+  weight: 3,
 };
 
 const createStyle = (color: string) => ({
@@ -120,6 +120,13 @@ export default function Map() {
                   <TileLayer
                     url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                     attribution="&copy; OpenStreetMap contributors &copy; CARTO"
+                  />
+                </BaseLayer>
+
+                <BaseLayer name="Satelita">
+                  <TileLayer
+                    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                    attribution='Tiles &copy; Esri'
                   />
                 </BaseLayer>
 
