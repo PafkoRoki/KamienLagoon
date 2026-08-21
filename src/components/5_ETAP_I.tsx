@@ -33,6 +33,17 @@ type Category = {
   };
 };
 
+const categoryIcons: Record<string, string> = {
+  KDW: "https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/icons/KDW.png",
+  KS7: "/icons/KS7.png",
+  MN5: "/icons/MN5.png",
+  MR6: "/icons/MR6.png",
+  MW2: "/icons/MW2.png",
+  UMW4: "/icons/UMW4.png",
+  ZL8: "/icons/ZL8.png",
+};
+
+
 const languages: Language[] = ["pl", "en", "de"];
 
 const categories: Category[] = [
@@ -124,11 +135,26 @@ export default function Spis() {
             <p className="spis__description">{t.description}</p>
           </div>
 
+           <img
+              src="https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/icons/Etap_1.png"
+              alt="Opis zdjęcia"
+              className="spis__image"
+            />
+
           <div className="spis__tables">
             {categories.map((category) => (
               <div className="spis__category" key={category.name}>
                 <div className="spis__category-header">
-                  <h3>{category.name}</h3>
+                  <div className="spis__category-title">
+                    <img
+                      src={categoryIcons[category.name]}
+                      alt={`Zakres ${category.name}`}
+                      className="spis__category-icon"
+                    />
+
+                    <h3>{category.name}</h3>
+                  </div>
+
                   <span>{category.data.features.length} działek</span>
                 </div>
 

@@ -112,6 +112,12 @@ export default function Spis() {
             <p className="spis__description">{t.description}</p>
           </div>
 
+           <img
+              src="https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/icons/Etap_2.png"
+              alt="Opis zdjęcia"
+              className="spis__image"
+            />
+
           <div className="spis__tables">
             {categories.map((category) => (
               <div className="spis__category" key={category.name}>

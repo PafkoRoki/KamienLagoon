@@ -1,0 +1,12 @@
+.ripple-distortion {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.ripple-distortion canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
