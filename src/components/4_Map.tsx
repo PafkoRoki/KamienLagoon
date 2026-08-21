@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import "./4_Map.css";
 
@@ -10,8 +9,6 @@ import {
   MapContainer,
   TileLayer,
 } from "react-leaflet";
-import type { Layer, PathOptions } from "leaflet";
-import type { Feature } from "geojson";
 
 import parcels from "../data/parcels";
 import KDW from "../data/KDW";
@@ -40,90 +37,75 @@ const categories: Category[] = [
   { name: "ZL8", color: "#ff922b", data: ZL8 },
 ];
 
-const parcelStyle: PathOptions = {
+const parcelStyle = {
   fillColor: "transparent",
   fillOpacity: 0,
   color: "#fff",
   weight: 1,
 };
 
-const createStyle = (color: string): PathOptions => ({
+
+
+
+const createStyle = (color: string) => ({
   color,
   fillColor: color,
   fillOpacity: 0.35,
   weight: 2,
 });
 
-const hoverStyle = (color: string): PathOptions => ({
-  color,
-  fillColor: color,
-  fillOpacity: 0.7,
-  weight: 4,
-});
+function onFeature(feature: any, layer: any, color: string) {
+  const properties = feature?.properties;
 
-const selectedStyle = (color: string): PathOptions => ({
-  color: "var(--white)",
-  fillColor: color,
-  fillOpacity: 0.85,
-  weight: 4,
-});
+  if (properties) {
+    const popupContent = Object.entries(properties)
+      .map(([key, value]) => `<strong>${key}:</strong> ${String(value)}`)
+      .join("<br />");
+
+    layer.bindPopup(popupContent);
+  }
+
+  layer.on({
+    mouseover: () => {
+      layer.setStyle({
+        color,
+        fillColor: color,
+        fillOpacity: 0.7,
+        weight: 4,
+      });
+
+      layer.bringToFront();
+    },
+
+    mouseout: () => {
+      layer.setStyle(createStyle(color));
+    },
+
+    click: () => {
+      layer.setStyle({
+        color: "var(--white)",
+        fillColor: color,
+        fillOpacity: 0.85,
+        weight: 4,
+      });
+
+      layer.openPopup();
+    },
+  });
+}
+
+{categories.map((category) => (
+  <GeoJSON
+    key={category.name}
+    data={category.data}
+    style={createStyle(category.color)}
+    onEachFeature={(feature, layer) =>
+      onFeature(feature, layer, category.color)
+    }
+  />
+))}
 
 export default function Map() {
-  // referencja do aktualnie zaznaczonej (kliknięciem) warstwy — trwa między wszystkimi kategoriami
-  const selectedLayerRef = useRef<Layer | null>(null);
-
-  const onFeature = (feature: Feature, layer: Layer, color: string) => {
-    const properties = feature?.properties;
-
-    if (properties) {
-      const popupContent = Object.entries(properties)
-        .map(([key, value]) => `<strong>${key}:</strong> ${String(value)}`)
-        .join("<br />");
-
-      (layer as any).bindPopup(popupContent);
-    }
-
-    layer.on({
-      mouseover: () => {
-        // jeśli warstwa jest aktualnie zaznaczona kliknięciem — nie nadpisuj jej stylu
-        if (selectedLayerRef.current === layer) return;
-
-        (layer as any).setStyle(hoverStyle(color));
-        (layer as any).bringToFront();
-      },
-
-      mouseout: () => {
-        // jeśli warstwa jest zaznaczona — zostaw jej styl "selected"
-        if (selectedLayerRef.current === layer) return;
-
-        (layer as any).setStyle(createStyle(color));
-      },
-
-      click: () => {
-        // przywróć normalny styl poprzednio zaznaczonej warstwie (jeśli inna)
-        if (selectedLayerRef.current && selectedLayerRef.current !== layer) {
-          const prevLayer = selectedLayerRef.current as any;
-          const prevColor = prevLayer.options?.color as string;
-          prevLayer.setStyle(createStyle(prevColor));
-        }
-
-        selectedLayerRef.current = layer;
-
-        (layer as any).setStyle(selectedStyle(color));
-        (layer as any).bringToFront();
-        (layer as any).openPopup();
-      },
-
-      popupclose: () => {
-        // po zamknięciu popupu odznacz warstwę (usuń ten blok, jeśli podświetlenie ma zostać na stałe)
-        if (selectedLayerRef.current === layer) {
-          selectedLayerRef.current = null;
-          (layer as any).setStyle(createStyle(color));
-        }
-      },
-    });
-  };
-
   return (
     <section id="map" className="map section">
       <div className="map__container container">
@@ -155,9 +137,7 @@ export default function Map() {
                 key={category.name}
                 data={category.data}
                 style={createStyle(category.color)}
-                onEachFeature={(feature, layer) =>
-                  onFeature(feature, layer, category.color)
-                }
+                onEachFeature={onFeature}
               />
             ))}
           </MapContainer>
