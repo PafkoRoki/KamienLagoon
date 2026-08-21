@@ -252,3 +252,45 @@
   display: block;
   margin-top: 20px;
 }
+
+.spis__category-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.spis__category-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.spis__category-icon {
+  display: block;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  padding: 0.35rem;
+}
+
+.spis__category-header h3 {
+  color: var(--sea);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+  .spis__category-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  .spis__category-title {
+    gap: 0.5rem;
+  }
+}
