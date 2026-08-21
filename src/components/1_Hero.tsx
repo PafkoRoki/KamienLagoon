@@ -1,29 +1,32 @@
-
-
-import ScrollExpand from './ScrollExpand';
+import ScrollExpand from "./ScrollExpand";
 import Lagoon from "../assets/Lagoon.jpg";
-import './1_Hero.css'
+import "./1_Hero.css";
 
 export default function Hero() {
   return (
     <section id="top" className="hero">
-
       <ScrollExpand
         src={Lagoon}
-        alt="Product hero"
-        title="ŻÓŁCINO"
+        alt="Lagoon Kamień"
+        title="PENINSULA"
         scrollHint="Scroll inside the frame"
         useWindowScroll
+        startRadius={0}
+        endRadius={0}
       >
-        <h1>Every pixel, everywhere</h1>
-        <p>The frame opens up as you scroll and hands the whole stage to your media.</p>
+        <div className="hero__copy">
+          <p className="hero__eyebrow">ŻÓŁCINO — KAMIEŃ LAGOON</p>
+          <h1>ŻÓŁCINO PENINSULA</h1>
+          <p className="hero__subtitle">
+            Wyjątkowy projekt inwestycyjny nad Zalewem Kamieńskim
+          </p>
+        </div>
       </ScrollExpand>
 
-
       <div className="container hero__scroll">
-        <span>Scroll</span>
+        <span>SCROLL</span>
         <span className="hero__scroll-line" aria-hidden="true" />
       </div>
     </section>
-  )
+  );
 }

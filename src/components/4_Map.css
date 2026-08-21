@@ -1,0 +1,75 @@
+.map {
+  background: var(--bg);
+  color: var(--black);
+}
+
+.map__container {
+  border-top: 1px solid var(--line);
+}
+
+.map__header {
+  display: flex;
+  align-items: center;
+  min-height: 4rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.map__eyebrow {
+  color: var(--sea);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.map__frame {
+  position: relative;
+  height: clamp(420px, 65vw, 720px);
+  margin: clamp(48px, 8vw, 120px) 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.map__leaflet {
+  width: 100%;
+  height: 100%;
+}
+
+.map__legend {
+  position: absolute;
+  z-index: 1000;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  background: var(--white);
+  color: var(--black);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.map__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.map__legend-color {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+@media (max-width: 560px) {
+  .map__frame {
+    height: 520px;
+    margin: 48px 0;
+  }
+
+  .map__legend {
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }
+}

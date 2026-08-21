@@ -5,8 +5,8 @@ import logo from '../assets/logo.svg'
   const items = [
     {
       label: "About",
-      bgColor: "hsl(178, 52%, 32%)",
-      textColor: "#f0f0f0",
+      bgColor: "var(--navy)",
+      textColor: "var(--white)",
       links: [
         { label: "LOCATION OVERVIEW", href: "/Lagoon/#info", ariaLabel: "Location overview" },
         { label: "LOCATION", href: "/Lagoon/#location", ariaLabel: "Location" },
@@ -16,8 +16,8 @@ import logo from '../assets/logo.svg'
     },
     {
       label: "Projects", 
-      bgColor: "hsl(177, 55%, 48%)",
-      textColor: "#f0f0f0",
+      bgColor: "var(--navy)",
+      textColor: "var(--white)",
       links: [
         { label: "INTERACTIVE MAP", href: "/Lagoon/#map", ariaLabel: "Interactive map" },
         { label: "3D MODEL", href: "/Lagoon/#model", ariaLabel: "3D model" }
@@ -25,8 +25,8 @@ import logo from '../assets/logo.svg'
     },
     {
       label: "Contact",
-      bgColor: "hsl(171, 42%, 56%)", 
-      textColor: "#f0f0f0",
+      bgColor: "var(--navy)", 
+      textColor: "var(--white)",
       links: [
         { label: "790 820 114", href: "tel:+48790820114", ariaLabel: "Call 790 820 114" },
         { label: "EMAIL ✉", href: "mailto:eranpro@wp.pl", ariaLabel: "Email eranpro@wp.pl" }
@@ -41,10 +41,10 @@ function Header() {
       logo={logo}
       logoAlt="Company Logo"
       items={items}
-      baseColor="#f0f0f0"
-      menuColor="#2d2d2d"
-      buttonBgColor="#f0f0f0"
-      buttonTextColor="#f0f0f0"
+      baseColor="var(--navy)"
+      menuColor="var(--white)"
+      buttonBgColor="var(--navy)"
+      buttonTextColor="var(--navy)"
       ease="power3.out"
       />
   )

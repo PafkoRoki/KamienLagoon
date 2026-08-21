@@ -11,15 +11,9 @@
     display: none; 
 }
 
-::selection {
-  background: #2d2d2d;
-  color: #f0f0f0;
-  text-shadow: none;
-}
-
 ::-moz-selection {
-  background: #2d2d2d;
-  color: #f0f0f0;
+  background: var(--navy);
+  color: var(--line-light);
   text-shadow: none;
 }
 

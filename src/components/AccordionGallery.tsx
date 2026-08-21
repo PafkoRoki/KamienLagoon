@@ -34,26 +34,25 @@ export interface AccordionGalleryProps {
 }
 
 const DEFAULT_ITEMS: AccordionGalleryItem[] = [
-  { image: 'https://picsum.photos/id/1015/900/1200', label: 'Canyon', link: '#' },
-  { image: 'https://picsum.photos/id/1018/900/1200', label: 'Ridgeline', link: '#' },
-  { image: 'https://picsum.photos/id/1039/900/1200', label: 'Falls', link: '#' },
-  { image: 'https://picsum.photos/id/1043/900/1200', label: 'Harbour', link: '#' },
-  { image: 'https://picsum.photos/id/1044/900/1200', label: 'Skyline', link: '#' }
+  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz1.jpg', label: 'ETAP I', link: '#' },
+  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz2.jpg', label: 'ETAP II', link: '#' },
+  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz3.1.jpg', label: 'ETAP III', link: '#' },
+  { image: 'https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz4.jpg', label: 'ETAP IV', link: '#' }
 ];
 
 const AccordionGallery = ({
   items = DEFAULT_ITEMS,
   defaultIndex = 2,
   accentColor = '#ffffff',
-  overlayColor = '#060010',
+  overlayColor = '#102A32',
   textColor = '#ffffff',
   height = 460,
   gap = 10,
-  radius = 16,
+  radius = 0,
   expandRatio = 0.52,
   orientation = 'horizontal',
   duration = 0.6,
-  ease = 'power3.out',
+  ease = 'power2.out',
   parallax = 0.5,
   tilt = 8,
   stagger = 0.06,
