@@ -29,7 +29,7 @@ export default function Model() {
             />
           </div>
         </div>
-
+Ripple Test
             <div>
               <RippleDistortion
                 src="https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/images/Wiz5.jpg"
@@ -37,13 +37,13 @@ export default function Model() {
                 strength={0.2}
                 swirl={1}
                 rings={4}
-                grayscale
+                grayscale={false} 
                 spread={5}
                 fade={3}
                 spacing={15}
                 dispersion={0}
                 glint={0}
-                tint="#a855f7"
+                tint="#102A32"
                 tintAmount={0.1}
                 highlightColor="#ffffff"
                 trigger="hover"
