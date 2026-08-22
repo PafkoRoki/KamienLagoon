@@ -35,12 +35,12 @@ type Category = {
 
 const categoryIcons: Record<string, string> = {
   KDW: "https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/icons/KDW.png",
-  KS7: "/icons/KS7.png",
-  MN5: "/icons/MN5.png",
-  MR6: "/icons/MR6.png",
-  MW2: "/icons/MW2.png",
-  UMW4: "/icons/UMW4.png",
-  ZL8: "/icons/ZL8.png",
+  KS7: "https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/icons//KS7.png",
+  MN5: "https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/icons/MN5.png",
+  MR6: "https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/icons/MR6.png",
+  MW2: "https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/icons/MW2.png",
+  UMW4: "https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/icons/UMW4.png",
+  ZL8: "https://raw.githubusercontent.com/PafkoRoki/KamienLagoon/main/public/icons/ZL8.png",
 };
 
 
