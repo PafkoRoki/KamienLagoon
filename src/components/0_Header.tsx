@@ -9,7 +9,8 @@ import logo from '../assets/logo.svg'
       textColor: "var(--white)",
       links: [
         { label: "LOCATION", href: "/KamienLagoon/#location", ariaLabel: "Location" },
-        { label: "PLOT REGISTER", href: "/KamienLagoon/#spis", ariaLabel: "Plot register" },
+        { label: "ETAP I", href: "/KamienLagoon/#Etap_1", ariaLabel: "Etap 1" },
+        { label: "ETAP II", href: "/KamienLagoon/#Etap_2", ariaLabel: "Etap 2" },
         { label: "FOR DEVELOPERS", href: "/KamienLagoon/#dev", ariaLabel: "Information for developers" }
       ]
     },

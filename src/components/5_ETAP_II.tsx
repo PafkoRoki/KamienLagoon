@@ -86,7 +86,7 @@ export default function Spis() {
   const t = translations[language];
 
   return (
-    <section id="spis" className="spis section">
+    <section id="Etap_2" className="spis section">
       <div className="spis__container container">
         <header className="spis__header">
           <p className="spis__eyebrow">{t.eyebrow}</p>
